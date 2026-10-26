@@ -7,198 +7,278 @@ export const profile = {
   role: 'Ingeniero de software',
   location: 'Temuco, Chile',
   email: 'manuelespv@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/manuelespv/',
 }
 
 export const nav = [
-  { id: 'trayectoria', label: 'Trayectoria' },
-  { id: 'proyectos', label: 'Proyectos' },
   { id: 'stack', label: 'Stack' },
-  { id: 'preguntas', label: 'Preguntas' },
+  { id: 'experiencia', label: 'Experiencia' },
 ]
 
 export const hero = {
   eyebrow: `${profile.role} senior`,
   eyebrowPlace: ` · ${profile.location}`,
-  headline: ['Backends estables,', 'integraciones limpias', 'y agentes con contexto'],
-  sub: 'Soy Manuel Espinoza. Llevo más de seis años construyendo microservicios, integraciones con Oracle Fusion Cloud y sistemas multiagente para retail y servicios financieros.',
-  cta: 'Escríbeme un correo',
+  headline: ['Backends estables,', 'integraciones limpias', 'y agentes seguros', 'de nivel empresarial'],
+  sub: 'Soy Manuel Espinoza, ingeniero de software senior con más de 6 años construyendo software a nivel empresarial. Trabajo con distintos tipos de arquitectura y he participado en grandes proyectos de modernización de sistemas legacy, migraciones, integraciones y sistemas multiagente.',
   proofLabel: 'He construido software para',
   companies: ['Forus', 'Equifax', 'CreaLab', 'Smart Araucanía', 'Universidad de La Frontera'],
 }
 
-export const stats = [
-  {
-    value: '80%',
-    label: 'menos tiempo de procesamiento',
-    detail: 'en la creación masiva de órdenes de compra, con Redis y consultas optimizadas.',
-  },
-  {
-    value: '+90%',
-    label: 'de cobertura de pruebas',
-    detail: 'en microservicios financieros de Equifax, con JUnit y Mockito.',
-  },
-  {
-    value: '4',
-    label: 'canales desde una sola carga',
-    detail: 'Oracle, VTEX, Shopify y marketplaces vía Centry.',
-  },
-  {
-    value: '6+',
-    label: 'años construyendo software',
-    detail: 'en retail, finanzas, educación y ciudades inteligentes.',
-  },
-]
+/** Diagrama del inicio: título del cuadro y sus pestañas. El dibujo de cada una está en src/components/showcase/scenes.tsx */
+export const showcaseTitle = 'Así funcionan los sistemas que construyo'
 
-export const tagline =
-  'Ordeno lo complejo: datos que llegan a tiempo, migraciones sin pausas y agentes que conocen cada proyecto.'
+export const showcase = [
+  {
+    id: 'eventos',
+    label: 'Eventos',
+    short: 'Eventos',
+    title: 'Arquitectura orientada a eventos',
+    caption:
+      'Una venta entra a Kafka y el servicio de stock la procesa: actualiza Oracle y MongoDB, y RabbitMQ lleva el nuevo stock a VTEX, Shopify y los marketplaces.',
+  },
+  {
+    id: 'integraciones',
+    label: 'Integraciones',
+    short: 'Integración',
+    title: 'Integración de datos empresariales',
+    caption:
+      'Una planilla de productos se valida y se publica en VTEX, Shopify y marketplaces; una de órdenes de compra entra a Oracle Fusion. Cada pieza encaja en su lugar.',
+  },
+  {
+    id: 'optimizaciones',
+    label: 'Optimizaciones',
+    short: 'Rendimiento',
+    title: 'Optimización de rendimiento',
+    caption:
+      'Un proceso lento entra a pits: el equipo le agrega caché con Redis, optimiza las consultas y ajusta el pool de conexiones. Sale con 80% menos tiempo.',
+  },
+  {
+    id: 'agentes',
+    label: 'Agentes',
+    short: 'Agentes',
+    title: 'Sistemas multiagente',
+    caption:
+      'Un orquestador reparte un bug: un agente busca contexto en el grafo de conocimiento, otro escribe el fix y otro lo revisa antes de abrir el pull request.',
+  },
+  {
+    id: 'legacy',
+    label: 'Modernización',
+    short: 'Legacy',
+    title: 'Modernización de código legacy',
+    caption:
+      'El código Delphi se lee línea por línea, pasa por una migración gradual y vuelve a la vida como servicios modernos sobre Kubernetes.',
+  },
+] as const
 
-export type Scene = {
+/** Logos disponibles en src/components/experience/logos.tsx */
+export type LogoId =
+  | 'kafka'
+  | 'rabbitmq'
+  | 'oracle'
+  | 'aws'
+  | 'springboot'
+  | 'go'
+  | 'python'
+  | 'react'
+  | 'docker'
+  | 'kubernetes'
+  | 'postgresql'
+  | 'redis'
+  | 'mongodb'
+  | 'neo4j'
+  | 'gitlab'
+  | 'google'
+  | 'delphi'
+  | 'claude'
+  | 'vtex'
+  | 'shopify'
+  | 'store'
+  | 'excel'
+  | 'java'
+  | 'nextjs'
+  | 'vue'
+  | 'tailwind'
+  | 'jenkins'
+  | 'sonarqube'
+  | 'junit'
+  | 'spark'
+
+export type Capability = {
   id: string
-  period: string
-  company: string
-  role: string
+  /** Etiqueta corta que se ve bajo la escena */
+  label: string
+  kicker: string
+  title: string
   summary: string
   points: string[]
-  tags: string[]
+  where: string
+  stack: { label: string; logo?: LogoId }[]
 }
 
-export const journey: Scene[] = [
+export const experience: Capability[] = [
   {
-    id: 'ufro',
-    period: 'Ago 2019 a ago 2020',
-    company: 'Universidad de La Frontera',
-    role: 'Ayudante de investigación',
-    summary: 'Diseñé lenguajes específicos de dominio para comercio electrónico que generan código Spring Boot.',
-    points: ['Modelado con MetaEdit+', 'Automatización del desarrollo de software'],
-    tags: ['DSL', 'MetaEdit+', 'Spring Boot'],
-  },
-  {
-    id: 'smart',
-    period: 'Abr 2020 a jul 2020',
-    company: 'Smart Araucanía',
-    role: 'Ingeniero de software',
-    summary: 'Construí soluciones de ciudad inteligente con microservicios FIWARE sobre Docker.',
-    points: ['Plataformas IoT', 'Integración de servicios urbanos'],
-    tags: ['FIWARE', 'Docker', 'IoT'],
-  },
-  {
-    id: 'crealab',
-    period: 'Nov 2020 a may 2021',
-    company: 'CreaLab',
-    role: 'Desarrollador frontend',
-    summary: 'Desarrollé una aplicación web progresiva para plataformas educativas, responsiva y accesible.',
-    points: ['Equipo multidisciplinario', 'Interfaces para estudiantes y docentes'],
-    tags: ['Vue.js', 'Tailwind CSS', 'PWA'],
-  },
-  {
-    id: 'equifax',
-    period: 'Jul 2021 a ene 2022',
-    company: 'Equifax',
-    role: 'Ingeniero de software',
-    summary: 'Desarrollé microservicios para evaluar solvencia y riesgo crediticio de bancos, retailers y prestadores de salud.',
-    points: ['Spring Boot sobre AWS EKS y Amazon RDS', 'Más del 90% de cobertura de pruebas', 'SonarQube, Fortify y Jenkins'],
-    tags: ['Spring Boot', 'AWS EKS', 'PostgreSQL'],
-  },
-  {
-    id: 'forus',
-    period: 'Ene 2022 a hoy',
-    company: 'Forus',
-    role: 'Ingeniero de software senior',
-    summary: 'Modernizo plataformas críticas de retail y lidero soluciones con IA generativa.',
+    id: 'microservicios',
+    label: 'microservicios',
+    kicker: 'Arquitectura distribuida',
+    title: 'Microservicios',
+    summary: 'Dividí sistemas grandes en servicios pequeños, cada uno con sus datos, que se despliegan y escalan por separado.',
     points: [
-      'Migración de Oracle EBS a Oracle Fusion Cloud',
-      'Rendimiento recuperado en Oracle 19c con HikariCP',
-      'Réplica del ERP con AWS serverless y MongoDB',
+      'Spring Boot y Go en contenedores sobre AWS EKS',
+      'Evaluación de riesgo crediticio y catálogo multicanal en producción',
+      'Más del 90% de cobertura con pruebas automatizadas',
     ],
-    tags: ['Oracle Fusion', 'AWS', 'Go', 'IA generativa'],
+    where: 'Forus, Equifax y Smart Araucanía',
+    stack: [
+      { label: 'Spring Boot', logo: 'springboot' },
+      { label: 'Go', logo: 'go' },
+      { label: 'Kubernetes', logo: 'kubernetes' },
+      { label: 'Docker', logo: 'docker' },
+      { label: 'Redis', logo: 'redis' },
+    ],
   },
-]
-
-export const work = {
-  knowledge: {
-    title: 'Conocimiento técnico vivo',
-    body: 'Varios agentes analizan los repositorios de GitLab y guardan arquitecturas, dependencias, tablas e integraciones en Neo4j. El equipo pregunta en lenguaje natural y recibe diagramas interactivos.',
-    tags: ['Neo4j', 'Embeddings', 'Agentes'],
-    query: '¿Qué servicios usan la tabla de órdenes?',
+  {
+    id: 'eventos',
+    label: 'eventos',
+    kicker: 'Integración asíncrona',
+    title: 'Arquitectura orientada a eventos',
+    summary: 'Conecté sistemas con eventos y colas para que cada parte reaccione a tiempo, sin esperar a que las demás respondan.',
+    points: [
+      'Kafka para flujos de eventos y RabbitMQ para colas de trabajo',
+      'SNS y SQS en la réplica del ERP',
+      'Sincronización de inventario en tiempo real',
+    ],
+    where: 'Forus',
+    stack: [
+      { label: 'Apache Kafka', logo: 'kafka' },
+      { label: 'RabbitMQ', logo: 'rabbitmq' },
+      { label: 'SNS y SQS', logo: 'aws' },
+    ],
   },
-  specs: {
-    title: 'De una idea a una spec técnica',
-    body: 'Preguntas dinámicas convierten una descripción inicial en una especificación clara, enriquecida con el contexto del proyecto para guiar a agentes de código como Claude Code.',
-    tags: ['Specs', 'Claude Code'],
-    prompt: 'Exportar órdenes aprobadas a Fusion',
-    chips: ['Alcance', 'Integraciones', 'Criterios'],
+  {
+    id: 'legacy',
+    label: 'modernización',
+    kicker: 'Código legacy',
+    title: 'De legacy a código moderno',
+    summary: 'Llevé aplicaciones antiguas a lenguajes actuales sin perder lo que el negocio ya hacía bien.',
+    points: [
+      'Aplicaciones Delphi reescritas en Spring Boot, Go, Python y React',
+      'Compatibilidad funcional para que los usuarios no noten el cambio',
+      'Reemplazo por partes, conviviendo con el sistema anterior',
+    ],
+    where: 'Forus',
+    stack: [
+      { label: 'Delphi', logo: 'delphi' },
+      { label: 'Spring Boot', logo: 'springboot' },
+      { label: 'Go', logo: 'go' },
+      { label: 'Python', logo: 'python' },
+      { label: 'React', logo: 'react' },
+    ],
   },
-  agents: {
+  {
+    id: 'erp',
+    label: 'migración erp',
+    kicker: 'Migración de ERP',
+    title: 'De Oracle EBS a Oracle Fusion Cloud',
+    summary: 'Participé en el paso del ERP on premise a la nube, con integraciones nuevas y una réplica que mantuvo vivas las herramientas existentes.',
+    points: [
+      'Integraciones SOAP y REST con Oracle Fusion',
+      'Base espejo del ERP con API Gateway, SNS, SQS, Lambda y MongoDB',
+      'Rendimiento recuperado en Oracle 19c ajustando conexiones con HikariCP',
+    ],
+    where: 'Forus',
+    stack: [
+      { label: 'Oracle EBS', logo: 'oracle' },
+      { label: 'Oracle Fusion', logo: 'oracle' },
+      { label: 'AWS serverless', logo: 'aws' },
+      { label: 'MongoDB', logo: 'mongodb' },
+    ],
+  },
+  {
+    id: 'agentes',
+    label: 'multiagente',
+    kicker: 'IA generativa',
     title: 'Sistemas multiagente',
-    body: 'Agentes que automatizan tareas de ingeniería de software, cada uno con el modelo que mejor resuelve su parte.',
-    tags: ['Google ADK', 'LiteLLM', 'AWS Bedrock'],
+    summary: 'Diseñé agentes para automatizar y mejorar procesos de ingeniería a nivel empresarial.',
+    points: [
+      'Orquestación con Google ADK, LiteLLM y AWS Bedrock, con un modelo por agente',
+      'Persistencia del conocimiento técnico en un grafo Neo4j, consultable con embeddings',
+      'Foco en seguridad y tratamiento de datos, con guardrails en el código y políticas de AWS Bedrock',
+    ],
+    where: 'Forus',
+    stack: [
+      { label: 'Google ADK', logo: 'google' },
+      { label: 'AWS Bedrock', logo: 'aws' },
+      { label: 'Neo4j', logo: 'neo4j' },
+      { label: 'Embeddings' },
+      { label: 'GitLab', logo: 'gitlab' },
+      { label: 'Guardrails' },
+    ],
   },
-  orders: {
-    title: 'Órdenes de compra masivas',
-    body: 'Next.js y Spring Boot integrados con Oracle Fusion por SOAP y REST, con caché en Redis.',
-    tags: ['Next.js', 'Redis', 'SOAP'],
-  },
-  catalog: {
-    title: 'Catálogo multicanal',
-    body: 'Microservicios que validan cada producto y lo publican en todos los canales de venta desde una sola carga.',
-    tags: ['Spring Boot', 'React', 'Centry'],
-    channels: ['Oracle', 'VTEX', 'Shopify', 'Centry'],
-  },
+]
+
+export type StackGroup = 'backend' | 'ia' | 'datos' | 'eventos' | 'cloud' | 'erp' | 'frontend' | 'calidad'
+export type StackItem = { label: string; logo?: LogoId; group: StackGroup }
+
+export const stackGroups: { id: StackGroup; label: string }[] = [
+  { id: 'backend', label: 'Backend' },
+  { id: 'ia', label: 'IA generativa' },
+  { id: 'datos', label: 'Datos' },
+  { id: 'eventos', label: 'Eventos' },
+  { id: 'cloud', label: 'Cloud' },
+  { id: 'erp', label: 'ERP e integraciones' },
+  { id: 'frontend', label: 'Frontend' },
+  { id: 'calidad', label: 'Calidad' },
+]
+
+/** Mapa del stack: el núcleo va al centro y cada anillo se aleja según cuánto lo uso. */
+export const stackMap: { core: StackItem[]; rings: StackItem[][] } = {
+  core: [
+    { label: 'Spring Boot', logo: 'springboot', group: 'backend' },
+    { label: 'IA generativa', logo: 'spark', group: 'ia' },
+  ],
+  rings: [
+    [
+      { label: 'Java', logo: 'java', group: 'backend' },
+      { label: 'Google ADK', logo: 'google', group: 'ia' },
+      { label: 'Go', logo: 'go', group: 'backend' },
+      { label: 'AWS Bedrock', logo: 'aws', group: 'ia' },
+      { label: 'Python', logo: 'python', group: 'backend' },
+      { label: 'LiteLLM', group: 'ia' },
+    ],
+    [
+      { label: 'Apache Kafka', logo: 'kafka', group: 'eventos' },
+      { label: 'Oracle Fusion', logo: 'oracle', group: 'erp' },
+      { label: 'Neo4j', logo: 'neo4j', group: 'ia' },
+      { label: 'PostgreSQL', logo: 'postgresql', group: 'datos' },
+      { label: 'RabbitMQ', logo: 'rabbitmq', group: 'eventos' },
+      { label: 'Kubernetes', logo: 'kubernetes', group: 'cloud' },
+      { label: 'Embeddings', group: 'ia' },
+      { label: 'MongoDB', logo: 'mongodb', group: 'datos' },
+      { label: 'Redis', logo: 'redis', group: 'datos' },
+      { label: 'Claude Code', logo: 'claude', group: 'ia' },
+    ],
+    [
+      { label: 'Docker', logo: 'docker', group: 'cloud' },
+      { label: 'React', logo: 'react', group: 'frontend' },
+      { label: 'AWS Lambda', logo: 'aws', group: 'cloud' },
+      { label: 'Oracle EBS', logo: 'oracle', group: 'erp' },
+      { label: 'SNS y SQS', logo: 'aws', group: 'eventos' },
+      { label: 'Next.js', logo: 'nextjs', group: 'frontend' },
+      { label: 'GitLab', logo: 'gitlab', group: 'calidad' },
+      { label: 'VTEX', logo: 'vtex', group: 'erp' },
+      { label: 'API Gateway', logo: 'aws', group: 'cloud' },
+      { label: 'Vue.js', logo: 'vue', group: 'frontend' },
+      { label: 'Jenkins', logo: 'jenkins', group: 'calidad' },
+      { label: 'Shopify', logo: 'shopify', group: 'erp' },
+      { label: 'Tailwind CSS', logo: 'tailwind', group: 'frontend' },
+      { label: 'SonarQube', logo: 'sonarqube', group: 'calidad' },
+      { label: 'Delphi', logo: 'delphi', group: 'backend' },
+      { label: 'JUnit', logo: 'junit', group: 'calidad' },
+    ],
+  ],
 }
-
-export const process = [
-  {
-    title: 'Diagnóstico con datos',
-    body: 'Mido antes de cambiar: consultas, conexiones, colas y tiempos de respuesta. Así encontré el cuello de botella de conexiones tras la migración a Oracle 19c.',
-  },
-  {
-    title: 'Diseño para convivir',
-    body: 'Las migraciones grandes conviven con lo que ya funciona. Réplicas espejo, APIs y colas permiten mover piezas sin frenar a los usuarios.',
-  },
-  {
-    title: 'Automatizo lo repetible',
-    body: 'Agentes, validaciones y pipelines de CI/CD hacen el trabajo mecánico para que el equipo dedique su tiempo a las decisiones.',
-  },
-]
-
-export const stack = [
-  { group: 'Backend', items: ['Java', 'Spring Boot', 'Go', 'Python', 'Microservicios'] },
-  { group: 'Frontend', items: ['React', 'Next.js', 'Vue.js', 'Tailwind CSS', 'PWA'] },
-  { group: 'Datos', items: ['Oracle 19c', 'Oracle Fusion Cloud', 'PostgreSQL', 'MongoDB', 'Redis', 'Neo4j'] },
-  { group: 'Cloud', items: ['AWS Lambda', 'API Gateway', 'SNS', 'SQS', 'EKS', 'RDS', 'Docker'] },
-  { group: 'IA generativa', items: ['Google ADK', 'LiteLLM', 'AWS Bedrock', 'Embeddings', 'Claude Code'] },
-  { group: 'Calidad', items: ['JUnit', 'Mockito', 'SonarQube', 'Fortify', 'Jenkins'] },
-  { group: 'Integraciones', items: ['REST', 'SOAP', 'VTEX', 'Shopify', 'Centry', 'FIWARE'] },
-]
-
-export const faq = [
-  {
-    q: '¿En qué tipo de proyectos aporto más?',
-    a: 'En backends con alta carga e integraciones empresariales: sincronización de inventario, conexiones con ERP, catálogos multicanal y migraciones hacia la nube.',
-  },
-  {
-    q: '¿Tienes experiencia con Oracle Fusion Cloud?',
-    a: 'Sí. Participé en la migración de Forus desde Oracle EBS on premise hacia Oracle Fusion Cloud, modernizando aplicaciones Delphi hacia Spring Boot, Go, Python y React, e integrando procesos por SOAP y REST.',
-  },
-  {
-    q: '¿Has llevado IA generativa a procesos reales?',
-    a: 'Sí. Diseñé sistemas multiagente con Google ADK, LiteLLM y AWS Bedrock que automatizan tareas de ingeniería, y una plataforma que convierte requerimientos en specs para agentes de código.',
-  },
-  {
-    q: '¿También trabajas en frontend?',
-    a: 'Sí. Trabajo con React, Next.js y Vue.js. Construí la PWA educativa de CreaLab y las interfaces de las plataformas de órdenes y productos en Forus.',
-  },
-  {
-    q: '¿Cómo cuidas la calidad del software?',
-    a: 'Con pruebas automatizadas, análisis estático y pipelines de CI/CD. En Equifax mantuve más del 90% de cobertura con JUnit y Mockito, junto a SonarQube, Fortify y Jenkins.',
-  },
-  {
-    q: '¿Dónde estás y cómo te contacto?',
-    a: `Vivo en Temuco, Chile. La forma más directa es escribirme a ${profile.email}.`,
-  },
-]
 
 export const finalCta = {
-  title: '¿Tienes un sistema que necesita escalar o integrarse?',
-  body: 'Cuéntame qué estás construyendo y qué te está frenando. Te respondo con preguntas concretas y una primera idea de cómo abordarlo.',
+  title: 'Conversemos',
+  body: 'Si crees que mi perfil se ajusta a lo que buscas, o que puedo aportar en tu empresa, escríbeme un correo o conectemos en LinkedIn.',
 }

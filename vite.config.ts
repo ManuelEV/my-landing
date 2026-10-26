@@ -2,28 +2,11 @@ import { resolve } from 'node:path'
 import { defineConfig, loadEnv, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
-import { faq } from './src/content'
 
-/** Static SEO files that depend on the site URL: FAQ schema, robots.txt and sitemap.xml. */
+/** Static SEO files that depend on the site URL: robots.txt and sitemap.xml. */
 function seo(siteUrl: string): Plugin {
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faq.map((f) => ({
-      '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: { '@type': 'Answer', text: f.a },
-    })),
-  }
   return {
     name: 'seo',
-    transformIndexHtml(html, ctx) {
-      if (!ctx.path.endsWith('/index.html') || ctx.path.includes('privacidad')) return html
-      return html.replace(
-        '</head>',
-        `  <script type="application/ld+json">${JSON.stringify(faqSchema)}</script>\n  </head>`,
-      )
-    },
     generateBundle() {
       this.emitFile({
         type: 'asset',

@@ -14,8 +14,8 @@ function NotFound() {
           Esta ruta no lleva a ningún servicio
         </h1>
         <p className="mt-6 text-lg text-muted">
-          La página que buscas no existe o cambió de dirección. Desde el inicio puedes ver mi trayectoria, proyectos y
-          forma de contacto.
+          La página que buscas no existe o cambió de dirección. Desde el inicio puedes ver mi experiencia y la forma
+          de contacto.
         </p>
         <ButtonLink href="/" className="mt-8">
           <ArrowLeft size={18} weight="bold" aria-hidden="true" />

@@ -178,6 +178,57 @@
   stroke-dasharray: 6 6;
   animation: march 1.6s linear infinite;
 }
+/* Hero showcase: tab progress and scene change */
+.tab-progress {
+  transform: scaleX(0);
+  transform-origin: left;
+  animation-name: tab-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+@keyframes tab-progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+.scene-in {
+  animation: scene-in 700ms var(--ease-enter) both;
+}
+@keyframes scene-in {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+    filter: blur(6px);
+  }
+}
+
+/* Stack rows on phones: the list is doubled, so moving half its width loops seamlessly */
+.marquee {
+  animation: marquee linear infinite;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-mask {
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+/* Server rack lights in the ERP scene */
+@keyframes led {
+  0%,
+  60% {
+    opacity: 1;
+  }
+  61%,
+  100% {
+    opacity: 0.25;
+  }
+}
+.led {
+  animation: led 1.9s steps(1) infinite;
+}
 .bob {
   transform-box: fill-box;
   /* sine in out, the loop has no entrance so the base curve does not apply */

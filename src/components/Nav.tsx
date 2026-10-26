@@ -67,7 +67,7 @@ export function Nav({ home = true }: { home?: boolean }) {
             })}
           </ul>
 
-          <a href={`mailto:${profile.email}`} className={`${buttonClass('primary', 'sm')} ml-1`}>
+          <a href={href('contacto')} className={`${buttonClass('primary', 'sm')} ml-1`}>
             Contacto
           </a>
 

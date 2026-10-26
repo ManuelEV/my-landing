@@ -15,10 +15,11 @@ npm run preview   # sirve dist/ en local
 
 | Qué | Archivo |
 |---|---|
-| Todo el texto (hero, trayectoria, proyectos, stack, FAQ) | `src/content.ts` |
+| Todo el texto (hero, stack, experiencia, contacto) | `src/content.ts` |
 | Colores, fuentes y curvas de animación | `src/index.css` (bloque `@theme`) |
-| Escenas isométricas de la trayectoria | `src/components/journey/scenes.tsx` |
-| Animaciones de las tarjetas de proyectos | `src/components/work/visuals.tsx` y `work.css` |
+| Escenas isométricas de la experiencia | `src/components/experience/scenes.tsx` |
+| Logos de tecnologías | `src/components/experience/logos.tsx` |
+| Diagrama del inicio (pestañas) | `src/components/showcase/scenes.tsx` |
 | Dominio para canonical, Open Graph, robots y sitemap | `.env` → `VITE_SITE_URL` |
 
 ## Páginas
