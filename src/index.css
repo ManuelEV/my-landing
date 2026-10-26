@@ -1,0 +1,185 @@
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, monospace;
+
+  /* Dark palette, flat backgrounds only */
+  --color-bg: #000000;
+  --color-surface: #181818;
+  --color-surface-2: #1f1f1f;
+  --color-line: #272727;
+  --color-line-strong: #313131;
+  --color-olive: #131209;
+  --color-fg: #f4f4f2;
+  --color-muted: #9b9b9b;
+  --color-subtle: #6e6e6e;
+  --color-accent: #f2b544;
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-fade: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-io: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@layer base {
+  html {
+    background: var(--color-bg);
+    color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+  p,
+  li,
+  dd {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--color-accent);
+    color: #000;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  [id] {
+    scroll-margin-top: 96px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@utility text-gradient-hero {
+  background-image: linear-gradient(90deg, #ffffff, #9b9b9b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Scroll reveal (landing-page-design B7): rise 32px and fade once */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 700ms var(--ease-soft),
+    transform 700ms var(--ease-soft);
+  transition-delay: var(--d, 0ms);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Card intro (design-to-motion `card` kind): rise, settle and resolve from blur */
+.card-in {
+  opacity: 0;
+  transform: translateY(24px) scale(0.985);
+  filter: blur(6px);
+  transition:
+    transform 900ms var(--ease-enter),
+    opacity 600ms var(--ease-fade),
+    filter 700ms var(--ease-fade);
+  transition-delay: var(--d, 0ms);
+}
+.card-in.is-in {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* Stories pause when their section leaves the viewport */
+.story[data-paused='true'] *,
+.story[data-paused='true'] *::before,
+.story[data-paused='true'] *::after {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transform: none;
+    transition: opacity 700ms var(--ease-soft);
+  }
+  .card-in {
+    transform: none;
+    filter: none;
+    transition: opacity 600ms var(--ease-fade);
+  }
+  .story *,
+  .story *::before,
+  .story *::after {
+    animation: none !important;
+  }
+  .story .helper {
+    display: none;
+  }
+}
+
+/* Shared story keyframes */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+@keyframes march {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.pulse-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulse-ring 2s var(--ease-fade) infinite;
+}
+.marching {
+  stroke-dasharray: 6 6;
+  animation: march 1.6s linear infinite;
+}
+.bob {
+  transform-box: fill-box;
+  /* sine in out, the loop has no entrance so the base curve does not apply */
+  animation: bob 2.8s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="16" fill="#000"/>
+  <circle cx="32" cy="32" r="22" fill="#f4f4f2"/>
+  <text x="32" y="38.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#000">ME</text>
+  <circle cx="48" cy="16" r="5" fill="#f2b544"/>
+</svg>
