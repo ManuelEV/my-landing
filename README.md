@@ -25,27 +25,29 @@ npm run preview   # sirve dist/ en local
 
 - `/` landing principal
 - `/privacidad/` política de privacidad
-- `404.html` página de error propia (Cloudflare Pages la sirve con estado 404)
+- `404.html` página de error propia (Cloudflare la sirve con estado 404)
 
-## Despliegue en Cloudflare Pages
+## Despliegue en Cloudflare
 
-**Opción A, desde Git (recomendada).** Sube el repo a GitHub o GitLab y en Cloudflare: Workers & Pages → Create → Pages → Connect to Git.
+El sitio se publica como Worker con assets estáticos (`wrangler.toml` → `[assets]`), sin código de servidor.
 
-- Framework preset: `None` (o `Vite`)
+**Desde Git (recomendado).** Workers & Pages → Create → Import a repository.
+
 - Build command: `npm run build`
-- Build output directory: `dist`
-- Variable de entorno: `VITE_SITE_URL=https://tu-dominio` (y `NODE_VERSION=22` si el build usa una versión antigua)
+- Deploy command: `npx wrangler deploy`
+- El `name` de `wrangler.toml` debe coincidir con el nombre del Worker en el dashboard
+- `VITE_SITE_URL` sale de `.env`; para cambiarlo sin tocar el repo, agrégalo en Settings → Build → Variables
 
-Luego en el proyecto: Custom domains → Set up a custom domain → tu dominio. Si el dominio ya está en Cloudflare, el DNS se configura solo.
+Luego: Settings → Domains & Routes → Add → Custom domain → tu dominio. Si el dominio ya está en Cloudflare, el DNS se configura solo.
 
-**Opción B, subida directa con Wrangler.**
+**Desde tu máquina.**
 
 ```bash
 npx wrangler login
-npm run deploy    # build + wrangler pages deploy dist
+npm run deploy    # build + wrangler deploy
 ```
 
-`public/_headers` define caché larga para `/assets/*` y cabeceras de seguridad básicas.
+`public/_headers` define caché larga para `/assets/*` y cabeceras de seguridad básicas. Las rutas que no existen devuelven `404.html` con estado 404.
 
 ## Créditos de diseño
 

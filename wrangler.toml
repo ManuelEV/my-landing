@@ -1,3 +1,9 @@
+# Static site on Cloudflare Workers (static assets). No Worker script: Cloudflare serves dist/ directly.
+# The name must match the Worker name in the Cloudflare dashboard.
 name = "my-landing"
-pages_build_output_dir = "dist"
 compatibility_date = "2026-10-01"
+
+[assets]
+directory = "./dist"
+# Unknown routes get dist/404.html with a real 404 status
+not_found_handling = "404-page"
