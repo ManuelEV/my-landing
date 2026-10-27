@@ -18,8 +18,8 @@ export const nav = [
 export const hero = {
   eyebrow: `${profile.role} senior`,
   eyebrowPlace: ` · ${profile.location}`,
-  headline: ['Backends estables,', 'integraciones limpias', 'y agentes seguros', 'de nivel empresarial'],
-  sub: 'Soy Manuel Espinoza, ingeniero de software senior con más de 6 años construyendo software a nivel empresarial. Trabajo con distintos tipos de arquitectura y he participado en grandes proyectos de modernización de sistemas legacy, migraciones, integraciones y sistemas multiagente.',
+  headline: ['Manuel Espinoza'],
+  sub: 'Ingeniero de software senior con más de 6 años construyendo soluciones a nivel empresarial. Trabajo con distintos tipos de arquitectura y he participado en grandes proyectos de modernización de sistemas legacy, migraciones, integraciones y sistemas multiagente.',
   proofLabel: 'He construido software para',
   companies: ['Forus', 'Equifax', 'CreaLab', 'Smart Araucanía', 'Universidad de La Frontera'],
 }
@@ -280,5 +280,5 @@ export const stackMap: { core: StackItem[]; rings: StackItem[][] } = {
 
 export const finalCta = {
   title: 'Conversemos',
-  body: 'Si crees que mi perfil se ajusta a lo que buscas, o que puedo aportar en tu empresa, escríbeme un correo o conectemos en LinkedIn.',
+  body: 'Si crees que mi perfil se ajusta a lo que buscas, o que puedo aportar en tu empresa o proyecto, escríbeme un correo o conectemos en LinkedIn.',
 }
