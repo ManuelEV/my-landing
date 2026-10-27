@@ -20,8 +20,29 @@ export const hero = {
   eyebrowPlace: ` · ${profile.location}`,
   headline: ['Manuel Espinoza'],
   sub: 'Ingeniero de software senior con más de 6 años construyendo soluciones a nivel empresarial. Trabajo con distintos tipos de arquitectura y he participado en grandes proyectos de modernización de sistemas legacy, migraciones, integraciones y sistemas multiagente.',
-  proofLabel: 'He construido software para',
-  companies: ['Forus', 'Equifax', 'CreaLab', 'Smart Araucanía', 'Universidad de La Frontera'],
+}
+
+export type Stop = {
+  company: string
+  role: string
+  /** Año y mes en formato 2019-08; sin `to` es el trabajo actual */
+  from: string
+  to?: string
+  /** Área en que trabajé ahí; leídas en orden cuentan la evolución */
+  kicker: string
+}
+
+/** Línea de tiempo del inicio, de la más antigua a la actual. */
+export const trajectory: { label: string; current: string; stops: Stop[] } = {
+  label: 'Trayectoria',
+  current: 'Hoy',
+  stops: [
+    { company: 'Universidad de La Frontera', role: 'Ayudante de investigación', from: '2019-08', to: '2020-08', kicker: 'Investigación' },
+    { company: 'Smart Araucanía', role: 'Ingeniero de software', from: '2020-04', to: '2020-07', kicker: 'Smart City' },
+    { company: 'CreaLab', role: 'Desarrollador frontend', from: '2020-11', to: '2021-05', kicker: 'Frontend' },
+    { company: 'Equifax', role: 'Ingeniero de software', from: '2021-07', to: '2022-01', kicker: 'Datos y analítica' },
+    { company: 'Forus', role: 'Ingeniero de software senior', from: '2022-01', kicker: 'Retail e IA' },
+  ],
 }
 
 /** Diagrama del inicio: título del cuadro y sus pestañas. El dibujo de cada una está en src/components/showcase/scenes.tsx */

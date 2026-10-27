@@ -215,6 +215,89 @@
   mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
 }
 
+/* Hero trajectory: a comet travels the line once and lights each stop on arrival.
+   --step is the time between stops and --d when this stop's turn starts.
+   Phones run the line upward (newest first), wider screens left to right. */
+.trajectory-fill {
+  animation: var(--step) linear var(--d) both;
+}
+.trajectory-comet {
+  opacity: 0;
+  animation: var(--step) linear var(--d);
+}
+.trajectory-up .trajectory-fill {
+  animation-name: trajectory-fill-y;
+}
+.trajectory-up .trajectory-comet {
+  left: 50%;
+  translate: -50% 50%;
+  animation-name: trajectory-comet-up;
+}
+.trajectory-right .trajectory-fill {
+  animation-name: trajectory-fill-x;
+}
+.trajectory-right .trajectory-comet {
+  top: 50%;
+  translate: -50% -50%;
+  animation-name: trajectory-comet-right;
+}
+.trajectory-dot {
+  animation: trajectory-dot 450ms var(--ease-enter) var(--d) both;
+}
+.trajectory-label {
+  animation: trajectory-label 500ms var(--ease-fade) var(--d) both;
+}
+.trajectory-ping {
+  opacity: 0;
+  animation: pulse-ring 900ms var(--ease-fade) var(--d);
+}
+/* today's stop keeps pulsing once the comet gets there */
+.trajectory-pulse {
+  animation-delay: calc(var(--d) + 450ms);
+}
+@keyframes trajectory-fill-y {
+  from {
+    transform: scaleY(0);
+  }
+}
+@keyframes trajectory-fill-x {
+  from {
+    transform: scaleX(0);
+  }
+}
+@keyframes trajectory-comet-up {
+  from {
+    bottom: 0;
+    opacity: 1;
+  }
+  to {
+    bottom: 100%;
+    opacity: 1;
+  }
+}
+@keyframes trajectory-comet-right {
+  from {
+    left: 0;
+    opacity: 1;
+  }
+  to {
+    left: 100%;
+    opacity: 1;
+  }
+}
+@keyframes trajectory-dot {
+  from {
+    background: var(--color-bg);
+    border-color: var(--color-line-strong);
+    transform: scale(0.6);
+  }
+}
+@keyframes trajectory-label {
+  from {
+    opacity: 0.3;
+  }
+}
+
 /* Server rack lights in the ERP scene */
 @keyframes led {
   0%,

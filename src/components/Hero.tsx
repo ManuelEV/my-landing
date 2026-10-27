@@ -1,6 +1,7 @@
-import { hero } from '../content'
+import { hero, trajectory } from '../content'
 import { ContactLinks } from './ContactLinks'
 import { Showcase } from './showcase/Showcase'
+import { Trajectory } from './Trajectory'
 
 export function Hero() {
   return (
@@ -32,14 +33,8 @@ export function Hero() {
         <Showcase />
 
         <div className="reveal is-in mt-16 w-full max-w-4xl border-y border-line py-10">
-          <p className="font-mono text-sm text-accent">{hero.proofLabel}</p>
-          <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-            {hero.companies.map((c) => (
-              <li key={c} className="text-base font-medium text-fg sm:text-lg">
-                {c}
-              </li>
-            ))}
-          </ul>
+          <p className="font-mono text-sm text-accent">{trajectory.label}</p>
+          <Trajectory />
         </div>
       </div>
     </section>
